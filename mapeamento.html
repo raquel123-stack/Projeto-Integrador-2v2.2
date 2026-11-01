@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Encontre brechós, feiras e bazares da sua cidade em um só lugar.">
+  <title>Achados Urbanos | Brechós e Feiras</title>
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Leaflet: biblioteca gratuita para mapas interativos -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="js/script.js" defer></script>
+</head>
+<body>
+  <header class="topo">
+    <a class="marca" href="index.html" aria-label="Garimpo da Cidade - início">
+      <span class="marca-icone">♻</span>
+      <span>Achados<span class="marca-destaque"> Urbanos</span></span>
+    </a>
+    <nav aria-label="Navegação principal">
+      <a href="#explorar">Explorar</a>
+      <a href="impactos.html">Impactos na Comunidade</a>
+      <a href="#sugerir">Sugerir local</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="hero-conteudo">
+        <p class="etiqueta">MODA CIRCULAR • COMÉRCIO LOCAL • COMUNIDADE</p>
+        <h1>Seu próximo achado<br><span>está mais perto.</span></h1>
+        <p class="hero-texto">Descubra brechós, feiras, bazares e pequenos negócios da sua cidade. Explore lugares novos e fortaleça o comércio local.</p>
+        <a class="botao botao-claro" href="#explorar">Encontrar lugares <span aria-hidden="true">↓</span></a>
+      </div>
+      <div class="hero-ilustracao" aria-hidden="true">
+        <div class="circulo circulo-um"></div><div class="circulo circulo-dois"></div>
+        <div class="sacola">✿</div>
+        <div class="tag tag-um">ACHADOS ♡</div><div class="tag tag-dois">REUSE • REDESCUBRA</div>
+      </div>
+    </section>
+
+    <section class="busca-secao" id="explorar">
+      <div class="secao-cabecalho">
+        <div>
+          <p class="etiqueta etiqueta-verde">EXPLORE SUA CIDADE</p>
+          <h2>O que vamos encontrar hoje?</h2>
+          <p class="subtitulo">Pesquise por nome, bairro ou tipo de lugar.</p>
+        </div>
+      </div>
+      <div class="filtros">
+        <label class="campo-pesquisa">
+          <span aria-hidden="true">⌕</span>
+          <input id="pesquisa" type="search" placeholder="Ex.: brechó, Laranjeiras..." aria-label="Pesquisar por nome, bairro ou endereço">
+        </label>
+        <label class="campo-select">
+          <span class="somente-leitor">Filtrar por categoria</span>
+          <select id="filtroCategoria">
+            <option value="todos">Todas as categorias</option>
+            <option value="Brechó">Brechós</option>
+            <option value="Feira">Feiras</option>
+            <option value="Bazar">Bazares</option>
+            <option value="Artesanato">Artesanato</option>
+          </select>
+        </label>
+        <button class="botao botao-verde" id="limparFiltros" type="button">Limpar filtros</button>
+      </div>
+      <p class="resultado-contagem" id="contagem" aria-live="polite"></p>
+
+      <div class="conteudo-explorar">
+        <div class="lista-locais" id="listaLocais" aria-live="polite"></div>
+        <aside class="mapa-painel" id="mapa">
+          <div class="mapa-titulo"><div><h3>Mapa da região</h3><p>Selecione um marcador para ver os detalhes.</p></div><span class="mapa-pin">⌖</span></div>
+          <div id="mapaInterativo" role="application" aria-label="Mapa interativo de locais"></div>
+          <p class="aviso-mapa">O mapa precisa de conexão com a internet. Os marcadores mostram bairros aproximados, não a localização exata de cada endereço. Confirme endereços e horários antes da visita.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="como-funciona">
+      <div>
+        <p class="etiqueta etiqueta-verde">SIMPLES ASSIM</p>
+        <h2>Descubra. Visite. Reutilize.</h2>
+        <p class="subtitulo">Mais visibilidade para pequenos negócios e novas possibilidades para quem gosta de garimpar.</p>
+      </div>
+      <div class="passos">
+        <article class="passo"><span>01</span><h3>Encontre</h3><p>Use a busca e os filtros para descobrir locais por categoria ou região.</p></article>
+        <article class="passo"><span>02</span><h3>Planeje a visita</h3><p>Confira o endereço e abra a rota no seu aplicativo de mapas.</p></article>
+        <article class="passo"><span>03</span><h3>Compartilhe</h3><p>Conhece um lugar que não está aqui? Envie uma sugestão para análise.</p></article>
+      </div>
+    </section>
+
+    <section class="sugerir-secao" id="sugerir">
+      <div class="sugerir-texto">
+        <p class="etiqueta">A COMUNIDADE FAZ PARTE</p>
+        <h2>Conhece um lugar especial?</h2>
+        <p>Ajude outras pessoas a descobrirem brechós e feiras. As sugestões precisam ser verificadas antes de aparecerem publicamente.</p>
+        <div class="nota-privacidade">🔒 Envie somente informações comerciais destinadas à divulgação pública.</div>
+      </div>
+      <form id="formSugestao" class="formulario">
+        <div class="campo">
+          <label for="nomeLocal">Nome do local *</label>
+          <input id="nomeLocal" name="nomeLocal" required maxlength="80" placeholder="Ex.: Brechó da Praça">
+        </div>
+        <div class="linha-campos">
+          <div class="campo">
+            <label for="categoriaNova">Categoria *</label>
+            <select id="categoriaNova" name="categoriaNova" required>
+              <option value="">Escolha</option><option>Brechó</option><option>Feira</option><option>Bazar</option><option>Artesanato</option>
+            </select>
+          </div>
+          <div class="campo">
+            <label for="bairro">Bairro *</label>
+            <input id="bairro" name="bairro" required maxlength="70" placeholder="Nome do bairro">
+          </div>
+        </div>
+        <div class="campo">
+          <label for="endereco">Endereço ou referência *</label>
+          <input id="endereco" name="endereco" required maxlength="150" placeholder="Rua, número e cidade">
+        </div>
+        <div class="campo">
+          <label for="horario">Dias e horários (se souber)</label>
+          <input id="horario" name="horario" maxlength="100" placeholder="Ex.: sábados, das 8h às 13h">
+        </div>
+        <div class="campo">
+          <label for="contato">Contato público ou site (opcional)</label>
+          <input id="contato" name="contato" maxlength="120" placeholder="Instagram, telefone comercial ou site">
+        </div>
+        <button class="botao botao-claro botao-enviar" type="submit">Enviar sugestão <span aria-hidden="true">↗</span></button>
+        <p class="form-aviso" id="mensagemFormulario" role="status"></p>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <a class="marca marca-rodape" href="#inicio"><span class="marca-icone">♻</span>Achados Urbanos</a>
+    <p>Feito para conectar pessoas, pequenos negócios e iniciativas locais.</p>
+    <p class="rodape-pequeno">• Confirme endereços e horários antes de publicar informações.</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Encontre brechós, feiras e bazares da sua cidade em um só lugar.">
+        <title>Achados Urbanos | Brechós e Feiras</title>
+        <link rel="stylesheet" href="css/style.css">
+        <!-- Leaflet: biblioteca gratuita para mapas interativos -->
+        <link
+            rel="stylesheet"
+            href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+            integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+            crossorigin=""
+        >
+        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+        <script src="js/script.js" defer></script>
+    </head>
+    <body>
+        <header class="topo">
+            <a class="marca" href="index.html" aria-label="Garimpo da Cidade - início">
+                <span class="marca-icone">♻</span>
+                <span>
+                    Achados
+                    <span class="marca-destaque"> Urbanos</span>
+                </span>
+            </a>
+            <nav aria-label="Navegação principal">
+                <a href="index.html">Início</a>
+                <a href="mapeamento.html">Mapeamento</a>
+                <a href="mapeamento.html#sugerir">Sugerir Local</a>
+            </nav>
+        </header>
+        <main>
+            <section class="hero" id="inicio">
+                <div class="hero-conteudo">
+                    <p class="etiqueta">IMPACTO LOCAL • SUSTENTABILIDADE • ESPÍRITO SANTO</p>
+                    <h1>
+                        O futuro da nossa terra
+                        <br>
+                        <span>começa no comércio local.</span>
+                    </h1>
+                    <p class="hero-texto">A ausência do comércio local enfraquece nossa economia e a nossa comunidade. Descubra os impactos reais no Espírito Santo e fortaleça quem produz perto de você.</p>
+                    <a class="botao botao-claro" href="#impactos">
+                        Ver os impactos
+                        <span aria-hidden="true">↓</span>
+                    </a>
+                </div>
+                <div class="hero-ilustracao" aria-hidden="true">
+                    <div class="circulo circulo-um"></div>
+                    <div class="circulo circulo-dois"></div>
+                    <div class="sacola">🌱</div>
+                    <div class="tag tag-um">VALORIZE O ES ♡</div>
+                    <div class="tag tag-dois">IMPACTO • COMUNIDADE</div>
+                </div>
+            </section>
+            <!-- Seção: Impactos e Soluções na Comunidade -->
+            <section class="impacto-secao" id="impacto">
+                <div class="impacto-container">
+                    <!-- Bloco 1: O Problema / Impactos da Falta de Comércio Local -->
+                    <div id="impactos" class="impacto-bloco problema">
+                        <span class="etiqueta-alerta">&#9888;&#xFE0E; O DESAFIO ATUAL</span>
+                        <h2>Os impactos da falta do comércio local em Cariacica</h2>
+                        <p>Quando deixamos de consumir no comércio de bairro e descartamos itens que ainda têm vida útil, toda a comunidade do Espírito Santo sente os efeitos:</p>
+                        <ul class="lista-impactos">
+                            <li>
+                                <strong>Evasão da Economia Local:</strong>
+                                <span>O dinheiro sai da cidade em vez de circular e gerar novas oportunidades nos bairros de Cariacica.</span>
+                            </li>
+                            <li>
+                                <strong>Acúmulo de Resíduos:</strong>
+                                <span>A falta de incentivo à reutilização e ao garimpo aumenta o volume de lixo descartado no meio ambiente capixaba.</span>
+                            </li>
+                            <li>
+                                <strong>Enfraquecimento dos Pequenos Negócios:</strong>
+                                <span>Brechós, artesãos e pequenos feirantes perdem visibilidade para grandes redes e plataformas externas.</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- Bloco 2: A Solução / Como o Circula Cariacica Ajuda -->
+                    <div class="impacto-bloco solucao">
+                        <span class="etiqueta">&#127809;&#xFE0E; NOSSA PROPOSTA</span>
+                        <h2>Como o Circula Cariacica transforma essa realidade</h2>
+                        <p>Nosso objetivo é conectar moradores aos empreendedores locais para construir uma economia forte, sustentável e colaborativa no município:</p>
+                        <div class="grid-solucoes">
+                            <div class="item-solucao">
+                                <div class="icone-solucao">&#128506;&#xFE0E;</div>
+                                <div>
+                                    <h3>Mapeamento Acessível</h3>
+                                    <p>Reunimos em um só lugar os brechós, bazares e feiras livres espalhados por Cariacica, facilitando o acesso ao consumo consciente.</p>
+                                </div>
+                            </div>
+                            <div class="item-solucao">
+                                <div class="icone-solucao">&#9851;&#xFE0E;</div>
+                                <div>
+                                    <h3>Estímulo à Economia Circular</h3>
+                                    <p>Incentivamos a reutilização de vestuário e produtos, prolongando o ciclo de vida dos bens e reduzindo a pegada ecológica na região.</p>
+                                </div>
+                            </div>
+                            <div class="item-solucao">
+                                <div class="icone-solucao">&#129309;&#xFE0E;</div>
+                                <div>
+                                    <h3>Fortalecimento Comunitário</h3>
+                                    <p>Geramos renda direta para as famílias locais, mantendo o capital dentro do município e valorizando quem produz no ES.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <footer>
+            <a class="marca marca-rodape" href="#inicio">
+                <span class="marca-icone">♻</span>Achados Urbanos
+            </a>
+            <p>Feito para conectar pessoas, pequenos negócios e iniciativas locais.</p>
+            <p class="rodape-pequeno">• Confirme endereços e horários antes de publicar informações.</p>
+        </footer>
+    </body>
+</html>
